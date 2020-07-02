@@ -4,10 +4,10 @@ class Game
 
   def initialize
     @secret_word = ""
-    @figure = Figure.new
     @unguessed_letters = ALPHABET
     @correct_guesses = []
     @incorrect_guesses = []
+    @board = Board.new
   end
 
   def secret_word
@@ -25,10 +25,6 @@ class Game
     @secret_word.include?(letter)
   end
 
-  def move_letter(letter)
-    in_secret_word?(letter) ? @correct_guesses.push(letter) : @incorrect_guesses.push(letter)
-  end
-
   def get_guess
     puts "Please enter a letter that you have not already guessed"
     guess = gets.chomp.downcase
@@ -42,18 +38,15 @@ class Game
     end
     guess
   end
-  
-    # if guess is legit, check if it's in the secret word
-    # if it is, put it in correct_guesses and remove it from guessed_already
-    # if it is not, put it in incorrect_guesses and remove it from guessed_already
 
-    # need a display_word method - in Display class?
-    # find all locations of guess in the secret word
-    # call Display.display_word on the secret word
+  def refile_guess(guess)
+    in_secret_word?(guess) ? @correct_guesses.push(guess) : @incorrect_guesses.push(guess)
+    @unguessed_letters.delete(guess)
+  end
 
   def start
-    @figure.snowman(6)
-    puts get_guess
+    @board.secret_word_array("wangdangdoodle") 
+    refile_guess(get_guess)
   end
 
 end
