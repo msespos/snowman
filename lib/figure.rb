@@ -114,8 +114,7 @@ class Figure
     HEREDOC
   end
 
-  def snowman
-    num_wrong = 1
+  def snowman(num_wrong)
     send(@@NUMBERS[num_wrong - 1] + "_wrong")
   end
 
