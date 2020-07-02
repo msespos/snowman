@@ -22,9 +22,7 @@ class Game
   #move letter to guessed already / correct or guessed already / incorrect
 
   def start
-    puts secret_word
     @figure.snowman
-    p @unguessed_letters
   end
 
 end
