@@ -16,11 +16,12 @@ class Figure
          
   def bottom_third
     puts <<-HEREDOC
-     _____
-    /     \\
-   |       |
-   |       |
-    \\_____/
+         _____
+        /     \\
+       |       |
+       |       |
+        \\_____/
+
     HEREDOC
   end
   
@@ -28,8 +29,4 @@ class Figure
     bottom_third
   end
 
-  
 end
-
-figure = Figure.new
-figure.snowman
