@@ -24,17 +24,20 @@ class Figure
 
 
 
+
            _____
           /     \\
          |       |
          |       |
           \\_____/
 
+
     HEREDOC
   end
 
   def two_wrong
     puts <<-HEREDOC
+
 
 
 
@@ -47,11 +50,13 @@ class Figure
          |       |
           \\_____/
 
+
     HEREDOC
   end
   
   def three_wrong
     puts <<-HEREDOC
+
             ___
            /   \\
            \\___/
@@ -63,11 +68,13 @@ class Figure
          |       |
           \\_____/
 
+
     HEREDOC
   end
 
   def four_wrong
     puts <<-HEREDOC
+
             ___
     _\\/    /   \\
       \\    \\___/
@@ -79,11 +86,13 @@ class Figure
          |       |
           \\_____/
 
+
     HEREDOC
   end
 
   def five_wrong
     puts <<-HEREDOC
+
             ___
     _\\/    /   \\    \\/_
       \\    \\___/    /
@@ -95,11 +104,13 @@ class Figure
          |       |
           \\_____/
 
+
     HEREDOC
   end
 
   def six_wrong
     puts <<-HEREDOC
+
             ___
     _\\/    /. .\\    \\/_
       \\    \\_^_/    /
@@ -110,6 +121,7 @@ class Figure
          |   .   |
          |   .   |
           \\_____/
+
 
     HEREDOC
   end

@@ -7,7 +7,6 @@ class Game
     @unguessed_letters = ALPHABET
     @correct_guesses = []
     @incorrect_guesses = []
-    @board = Board.new
   end
 
   def secret_word
@@ -26,13 +25,13 @@ class Game
   end
 
   def get_guess
-    puts "Please enter a letter that you have not already guessed"
+    puts "Please enter a letter that you have not already guessed."
     guess = gets.chomp.downcase
     while guessed_already?(guess) || !ALPHABET.include?(guess)
       if guessed_already?(guess)
-        puts "You've already guessed that letter! Please try again"
+        puts "You've already guessed that letter! Please try again."
       else
-        puts "That is not a letter! Please try again"
+        puts "That is not a letter! Please try again."
       end
       guess = gets.chomp.downcase
     end
@@ -45,8 +44,10 @@ class Game
   end
 
   def start
-    @board.secret_word_array("wangdangdoodle") 
-    refile_guess(get_guess)
+    @board = Board.new(secret_word)
+    @board.replace_dashes("a")
+    @board.replace_dashes("e")
+    #refile_guess(get_guess)
   end
 
 end
