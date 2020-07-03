@@ -14,12 +14,12 @@ class Figure
 
 
            |
+      \    |    /
         \  |  /
-         \ | /
-      ____\|/____
+    ______\|/______
           /|\
-         / | \
         /  |  \
+      /    |    \
            |
 
 =end
@@ -29,16 +29,16 @@ class Figure
   def none_wrong
     puts <<-HEREDOC
 
-       |
-    \\  |  /
-     \\ | /
-  ____\\|/____
-      /|\\
-     / | \\
-    /  |  \\
-       |
+             |
+        \\    |    /
+          \\  |  /
+            \\|/          A single snowflake. Perfect score so far!
+            /|\\
+          /  |  \\
+        /    |    \\
+             |
 
-    HEREDOC
+  HEREDOC
   end
 
   def one_wrong
@@ -52,7 +52,7 @@ class Figure
 
            _____
           /     \\
-         |       |
+         |       |        One wrong. One snowball.
          |       |
           \\_____/
 
@@ -68,7 +68,7 @@ class Figure
 
             ___
           /     \\
-         |       |
+         |       |        Two wrong. Two snowballs.
           \\_____/
           /     \\
          |       |
@@ -83,7 +83,7 @@ class Figure
     puts <<-HEREDOC
 
             ___
-           /   \\
+           /   \\         Three wrong. The body has a head.
            \\___/
           /     \\
          |       |
@@ -103,8 +103,8 @@ class Figure
             ___
     _\\/    /   \\
       \\    \\___/
-       \\_ /     \\
-         |       |
+       \\_ /     \\       Four wrong. An arm appears.
+         |       |        Careful....
           \\_____/
           /     \\
          |       |
@@ -121,8 +121,8 @@ class Figure
             ___
     _\\/    /   \\    \\/_
       \\    \\___/    /
-       \\_ /     \\ _/
-         |       |
+       \\_ /     \\ _/    Five wrong. And the other arm appears.
+         |       |        Almost there....
           \\_____/
           /     \\
          |       |
@@ -139,13 +139,14 @@ class Figure
             ___
     _\\/    /. .\\    \\/_
       \\    \\_^_/    /
-       \\_ /  .  \\ _/
-         |   .   |
+       \\_ /  .  \\ _/    Six wrong. The Snowman is here!
+         |   .   |        You lose!
           \\_____/
           /  .  \\
          |   .   |
          |   .   |
           \\_____/
+
 
     HEREDOC
   end

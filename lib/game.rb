@@ -43,12 +43,19 @@ class Game
     @unguessed_letters.delete(guess)
   end
 
+  def play
+    until @board.word_solved? || @incorrect_guesses.length == 6
+      guess = get_guess
+      refile_guess(guess)
+      @board.replace_dashes(guess)
+      @board.print_turn(@incorrect_guesses)
+    end
+    puts "The word was #{@secret_word}!\n\n" if !@board.word_solved?
+  end
+
   def start
     @board = Board.new(secret_word)
-    first_guess = get_guess
-    refile_guess(first_guess)
-    @board.replace_dashes(first_guess)
-    @board.print_turn(@incorrect_guesses)
+    play
   end
 
 end

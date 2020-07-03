@@ -17,8 +17,14 @@ class Board
   def print_turn(incorrect_guesses)
     @figure.snowman(incorrect_guesses.length)
     puts @display_word.join(" ") + "\n\n"
-    puts (6 - incorrect_guesses.length).to_s + " more guesses wrong until the Snowman appears!\n"
-    puts "Incorrect guesses: " + incorrect_guesses.join(" ") + "\n\n"
+    if incorrect_guesses.length != 6
+      puts (6 - incorrect_guesses.length).to_s + " more wrong guesses until the Snowman appears!"
+    end
+    puts "\n\nIncorrect guesses: " + incorrect_guesses.join(" ") + "\n\n"
+  end
+
+  def word_solved?
+    !@display_word.include?("_")
   end
 
 end
