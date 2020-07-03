@@ -9,7 +9,7 @@ class Board
   end
 
   def all_dashes
-    puts @display_word.join(" ") + "\n\n"
+    puts "_ " * (@secret_word.length - 1) + "_\n\n"
   end
 
   def word_solved?

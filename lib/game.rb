@@ -9,7 +9,7 @@ class Game
     @incorrect_guesses = []
   end
 
-  def secret_word
+  def new_secret_word
     word_list = File.readlines "5desk.txt"
     word_list.map! { |word| word[0..-3] }
     word_list.delete_if { |word| word != word.downcase || word.length < 5 || word.length > 12 }
@@ -50,7 +50,11 @@ class Game
       @board.replace_dashes(guess)
       @board.print_turn(@incorrect_guesses)
     end
-    puts "You lose!\nThe word was #{@secret_word}!\n\n" if !@board.word_solved?
+    if @board.word_solved?
+      puts "Congratulations! You win!\n"
+    else
+      puts "You lose!\nThe word was #{@secret_word}!\n"
+    end
   end
 
   def intro
@@ -66,7 +70,7 @@ class Game
   end
 
   def start
-    @board = Board.new(secret_word)
+    @board = Board.new(new_secret_word)
     intro
     play
   end

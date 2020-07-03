@@ -128,7 +128,7 @@ class Figure
     _\\/    /   \\    \\/_
       \\    \\___/    /
        \\_ /     \\ _/    Five wrong. And the other arm appears.
-         |       |        Almost there....
+         |       |        Almost here... watch out....
           \\_____/
           /     \\
          |       |
