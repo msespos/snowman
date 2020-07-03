@@ -50,7 +50,7 @@ class Game
       @board.replace_dashes(guess)
       @board.print_turn(@incorrect_guesses)
     end
-    puts "The word was #{@secret_word}!\n\n" if !@board.word_solved?
+    puts "You lose!\nThe word was #{@secret_word}!\n\n" if !@board.word_solved?
   end
 
   def intro

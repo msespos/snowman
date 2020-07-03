@@ -14,12 +14,14 @@ class Figure
 
 
            |
+    \      |      /
       \    |    /
         \  |  /
-    ______\|/______
+          \|/
           /|\
         /  |  \
       /    |    \
+    /      |      \
            |
 
 =end
@@ -29,14 +31,18 @@ class Figure
   def none_wrong
     puts <<-HEREDOC
 
-             |
-        \\    |    /
-          \\  |  /
-            \\|/          A single snowflake. Perfect score so far!
-            /|\\
-          /  |  \\
-        /    |    \\
-             |
+
+           |
+    \\      |      /
+      \\    |    /
+        \\  |  /
+          \\|/            A single snowflake. Perfect score so far!
+          /|\\
+        /  |  \\
+      /    |    \\
+    /      |      \\
+           |
+
 
   HEREDOC
   end
@@ -140,7 +146,7 @@ class Figure
     _\\/    /. .\\    \\/_
       \\    \\_^_/    /
        \\_ /  .  \\ _/    Six wrong. The Snowman is here!
-         |   .   |        You lose!
+         |   .   |
           \\_____/
           /  .  \\
          |   .   |
