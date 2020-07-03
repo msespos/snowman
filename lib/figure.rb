@@ -12,9 +12,34 @@ class Figure
        |   .   |
         \_____/
 
+
+           |
+        \  |  /
+         \ | /
+      ____\|/____
+          /|\
+         / | \
+        /  |  \
+           |
+
 =end
 
-  @@NUMBERS = ["one", "two", "three", "four", "five", "six"]
+  @@NUMBERS = ["none", "one", "two", "three", "four", "five", "six"]
+
+  def none_wrong
+    puts <<-HEREDOC
+
+       |
+    \\  |  /
+     \\ | /
+  ____\\|/____
+      /|\\
+     / | \\
+    /  |  \\
+       |
+
+    HEREDOC
+  end
 
   def one_wrong
     puts <<-HEREDOC
@@ -122,12 +147,11 @@ class Figure
          |   .   |
           \\_____/
 
-
     HEREDOC
   end
 
   def snowman(num_wrong)
-    send(@@NUMBERS[num_wrong - 1] + "_wrong")
+    send(@@NUMBERS[num_wrong] + "_wrong")
   end
 
 end

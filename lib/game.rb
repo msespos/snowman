@@ -45,9 +45,10 @@ class Game
 
   def start
     @board = Board.new(secret_word)
-    @board.replace_dashes("a")
-    @board.replace_dashes("e")
-    #refile_guess(get_guess)
+    first_guess = get_guess
+    refile_guess(first_guess)
+    @board.replace_dashes(first_guess)
+    @board.print_turn(@incorrect_guesses)
   end
 
 end
