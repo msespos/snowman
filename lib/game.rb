@@ -53,8 +53,21 @@ class Game
     puts "The word was #{@secret_word}!\n\n" if !@board.word_solved?
   end
 
+  def intro
+    puts <<~HEREDOC
+      Welcome to Snowman!
+      Your job is to guess the secret word before the Snowman appears.
+      You get five wrong guesses before he does.
+      Good luck!
+      Here is how many letters are in the word:
+
+    HEREDOC
+    @board.all_dashes
+  end
+
   def start
     @board = Board.new(secret_word)
+    intro
     play
   end
 

@@ -5,8 +5,15 @@ class Board
     @display_word = []
     secret_word.length.times { |i| @display_word[i] = "_" }
     @guesses = []
-    p @secret_word
     @figure = Figure.new
+  end
+
+  def all_dashes
+    puts @display_word.join(" ") + "\n\n"
+  end
+
+  def word_solved?
+    !@display_word.include?("_")
   end
 
   def replace_dashes(guess)
@@ -20,11 +27,11 @@ class Board
     if incorrect_guesses.length != 6
       puts (6 - incorrect_guesses.length).to_s + " more wrong guesses until the Snowman appears!"
     end
-    puts "\n\nIncorrect guesses: " + incorrect_guesses.join(" ") + "\n\n"
-  end
-
-  def word_solved?
-    !@display_word.include?("_")
+    if incorrect_guesses == []
+      puts "\nIncorrect guesses: none\n\n"
+    else
+      puts "\nIncorrect guesses: " + incorrect_guesses.join(" ") + "\n\n"
+    end
   end
 
 end
