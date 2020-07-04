@@ -84,17 +84,22 @@ class Game
     })
   end
 
-#  def from_yaml(game)
-#    status = YAML.load(game)
-#    File.open(status)
-#    #self.new
-#  end
+  def from_yaml(game)
+    status = YAML.load(File.read(game))
+    @secret_word = status[:secret_word]
+    @unguessed_letters = status[:unguessed_letters]
+    @correct_guesses = status[:correct_guesses]
+    @incorrect_guesses = status[:incorrect_guesses]
+    @board = status[:board]
+  end
 
   def save_game(slot)
     File.open("saved_games/snowman_save_#{slot}.yml", "w").puts(self.to_yaml)
   end
 
-  # def load_game
+  def load_game
+    from_yaml("saved_games/snowman_save_1.yml")
+  end
 
   def finish
     if @board.word_solved?
@@ -134,10 +139,8 @@ class Game
   end
 
   def start
-    # from_yaml("saved_games/snowman_save_1.yml") if load_game?
-    @board = Board.new(new_secret_word)
+    load_game? ? load_game : @board = Board.new(new_secret_word)
     intro
     play
   end
-
 end

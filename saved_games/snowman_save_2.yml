@@ -1,0 +1,60 @@
+---
+:secret_word: factiousness
+:unguessed_letters:
+- a
+- b
+- c
+- d
+- e
+- f
+- g
+- h
+- i
+- j
+- k
+- l
+- m
+- n
+- o
+- p
+- q
+- r
+- s
+- t
+- u
+- v
+- w
+- x
+- y
+- z
+:correct_guesses: []
+:incorrect_guesses: []
+:board: !ruby/object:Board
+  secret_word:
+  - f
+  - a
+  - c
+  - t
+  - i
+  - o
+  - u
+  - s
+  - n
+  - e
+  - s
+  - s
+  display_word:
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+  guesses: []
+  figure: !ruby/object:Figure {}

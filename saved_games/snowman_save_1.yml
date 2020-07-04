@@ -1,48 +1,63 @@
 ---
-:secret_word: purdah
+:secret_word: religious
 :unguessed_letters:
-- a
 - b
 - c
 - d
-- e
-- f
-- g
 - h
-- i
 - j
 - k
-- l
 - m
-- n
 - o
 - p
 - q
-- r
 - s
 - t
-- u
 - v
 - w
 - x
 - y
 - z
-:correct_guesses: []
-:incorrect_guesses: []
+:correct_guesses:
+- e
+- r
+- g
+- u
+- l
+- i
+:incorrect_guesses:
+- f
+- n
+- a
 :board: !ruby/object:Board
   secret_word:
-  - p
-  - u
   - r
-  - d
-  - a
-  - h
+  - e
+  - l
+  - i
+  - g
+  - i
+  - o
+  - u
+  - s
   display_word:
+  - r
+  - e
+  - l
+  - i
+  - g
+  - i
   - _
+  - u
   - _
-  - _
-  - _
-  - _
-  - _
-  guesses: []
+  guesses:
+  - e
+  - r
+  - f
+  - g
+  - u
+  - n
+  - a
+  - l
+  - i
   figure: !ruby/object:Figure {}
