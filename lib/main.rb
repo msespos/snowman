@@ -7,4 +7,5 @@ require_relative 'figure.rb'
 # load their selected game
 
 game = Game.new
+p game.to_yaml
 game.start

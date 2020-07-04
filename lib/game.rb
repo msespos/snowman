@@ -52,10 +52,11 @@ class Game
 
   def to_yaml
     YAML.dump ({
-      :secret_word => @secret_word
-      :unguessed_letters => @unguessed_letters
-      :correct_guesses => @correct_guesses
-      :incorrect_guesses => @incorrect_guesses
+      :secret_word => @secret_word,
+      :unguessed_letters => @unguessed_letters,
+      :correct_guesses => @correct_guesses,
+      :incorrect_guesses => @incorrect_guesses,
+      :board => @board
     })
   end
 
