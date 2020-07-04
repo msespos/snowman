@@ -45,9 +45,20 @@ class Game
     @unguessed_letters.delete(guess)
   end
 
-  def save_game_preference
+  def get_slot
+    puts "There are 3 slots to save in, labeled 1, 2, and 3."
+    puts "Please select a number. You will overwrite any already saved game in that slot."
+    slot = gets.chomp
+    until slot == "1" || slot == "2" || slot == "3"
+      puts "Please select a number between 1 and 3."
+      slot = gets.chomp
+    end
+    slot
+  end
+
+  def save_game?
     puts "Would you like to save the game at this point?\nEnter y for yes, any other key for no"
-    gets.chomp.downcase == "y" ? true : false
+    gets.chomp.downcase == "y"
   end
 
   def to_yaml
@@ -60,8 +71,8 @@ class Game
     })
   end
 
-  def save_game
-    File.open("snowman_save.yml", "w").puts(self.to_yaml)
+  def save_game(slot)
+    File.open("saved_games/snowman_save_#{slot}.yml", "w").puts(self.to_yaml)
   end
 
   def finish
@@ -74,7 +85,12 @@ class Game
 
   def play
     until @board.word_solved? || @incorrect_guesses.length == 6
-      save_game if save_game_preference
+      if save_game?
+        save_game(get_slot)
+        puts "Game saved! Let's get back to the game."
+      else
+        puts "Let's get back to the game. You can always save later!"
+      end
       guess = get_guess
       refile_guess(guess)
       @board.replace_dashes(guess)
