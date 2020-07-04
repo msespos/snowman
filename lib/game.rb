@@ -45,9 +45,17 @@ class Game
     @unguessed_letters.delete(guess)
   end
 
+  def save_or_load_text(save_or_load)
+    if save_or_load == "save"
+      puts "There are 3 slots to save in, labeled 1, 2, and 3."
+      puts "Please select a number. You will overwrite any already saved game in that slot."
+    else
+      puts "There are 3 slots that a game could be saved in, labeled 1, 2, and 3."
+      puts "Please select a number. You should have saved a game in that slot already."
+    end
+  end
+
   def get_slot
-    puts "There are 3 slots to save in, labeled 1, 2, and 3."
-    puts "Please select a number. You will overwrite any already saved game in that slot."
     slot = gets.chomp
     until slot == "1" || slot == "2" || slot == "3"
       puts "Please select a number between 1 and 3."
@@ -61,6 +69,11 @@ class Game
     gets.chomp.downcase == "y"
   end
 
+  def load_game?
+    puts "Would you like to load a saved game?\nEnter y for yes, any other key for no"
+    gets.chomp.downcase == "y"
+  end
+
   def to_yaml
     YAML.dump ({
       :secret_word => @secret_word,
@@ -71,9 +84,17 @@ class Game
     })
   end
 
+#  def from_yaml(game)
+#    status = YAML.load(game)
+#    File.open(status)
+#    #self.new
+#  end
+
   def save_game(slot)
     File.open("saved_games/snowman_save_#{slot}.yml", "w").puts(self.to_yaml)
   end
+
+  # def load_game
 
   def finish
     if @board.word_solved?
@@ -86,6 +107,7 @@ class Game
   def play
     until @board.word_solved? || @incorrect_guesses.length == 6
       if save_game?
+        save_or_load_text("save")
         save_game(get_slot)
         puts "Game saved! Let's get back to the game."
       else
@@ -112,6 +134,7 @@ class Game
   end
 
   def start
+    # from_yaml("saved_games/snowman_save_1.yml") if load_game?
     @board = Board.new(new_secret_word)
     intro
     play

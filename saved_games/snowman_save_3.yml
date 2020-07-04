@@ -1,0 +1,50 @@
+---
+:secret_word: shirker
+:unguessed_letters:
+- a
+- b
+- c
+- d
+- e
+- f
+- g
+- h
+- i
+- j
+- k
+- l
+- m
+- n
+- o
+- p
+- q
+- r
+- s
+- t
+- u
+- v
+- w
+- x
+- y
+- z
+:correct_guesses: []
+:incorrect_guesses: []
+:board: !ruby/object:Board
+  secret_word:
+  - s
+  - h
+  - i
+  - r
+  - k
+  - e
+  - r
+  display_word:
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+  guesses: []
+  figure: !ruby/object:Figure {}
