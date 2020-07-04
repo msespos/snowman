@@ -26,7 +26,7 @@ class Figure
 
 =end
 
-  @@NUMBERS = ["none", "one", "two", "three", "four", "five", "six"]
+  NUMBERS = ["none", "one", "two", "three", "four", "five", "six"]
 
   def none_wrong
     puts <<-HEREDOC
@@ -158,7 +158,7 @@ class Figure
   end
 
   def snowman(num_wrong)
-    send(@@NUMBERS[num_wrong] + "_wrong")
+    send(NUMBERS[num_wrong] + "_wrong")
   end
 
 end

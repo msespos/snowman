@@ -1,5 +1,7 @@
 class Game
 
+  require 'yaml'
+
   ALPHABET = [*("a".."z")]
 
   def initialize
@@ -25,7 +27,7 @@ class Game
   end
 
   def get_guess
-    puts "Please enter a letter that you have not already guessed."
+    puts "Please enter a letter that you have not guessed yet."
     guess = gets.chomp.downcase
     while guessed_already?(guess) || !ALPHABET.include?(guess)
       if guessed_already?(guess)
@@ -43,18 +45,41 @@ class Game
     @unguessed_letters.delete(guess)
   end
 
-  def play
-    until @board.word_solved? || @incorrect_guesses.length == 6
-      guess = get_guess
-      refile_guess(guess)
-      @board.replace_dashes(guess)
-      @board.print_turn(@incorrect_guesses)
-    end
+  def save_game_preference
+    puts "Would you like to save the game at this point?\nEnter y for yes, any other key for no"
+    gets.chomp.downcase == "y" ? true : false
+  end
+
+  def to_yaml
+    YAML.dump ({
+      :secret_word => @secret_word
+      :unguessed_letters => @unguessed_letters
+      :correct_guesses => @correct_guesses
+      :incorrect_guesses => @incorrect_guesses
+    })
+  end
+
+  def save_game
+    # store the game class in a new file
+  end
+
+  def finish
     if @board.word_solved?
       puts "Congratulations! You win!\n"
     else
       puts "You lose!\nThe word was #{@secret_word}!\n"
     end
+  end
+
+  def play
+    until @board.word_solved? || @incorrect_guesses.length == 6
+      save_game if save_game_preference
+      guess = get_guess
+      refile_guess(guess)
+      @board.replace_dashes(guess)
+      @board.print_turn(@incorrect_guesses)
+    end
+    finish
   end
 
   def intro
