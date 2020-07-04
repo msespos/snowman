@@ -6,5 +6,4 @@ require_relative 'figure.rb'
 # if so, give them the list of filenames
 # load their selected game
 
-game = Game.new
-game.start
+Game.new.start

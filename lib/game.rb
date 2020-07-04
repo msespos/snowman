@@ -61,7 +61,7 @@ class Game
   end
 
   def save_game
-    # store the game class in a new file
+    File.open("snowman_save.yml", "w").puts(self.to_yaml)
   end
 
   def finish
