@@ -12,7 +12,11 @@ class Board
     puts "_ " * (@secret_word.length - 1) + "_\n\n"
   end
 
-  def word_solved?
+  def guess_correct?(guess)
+    @secret_word.include?(guess)
+  end
+
+    def word_solved?
     !@display_word.include?("_")
   end
 
@@ -21,8 +25,9 @@ class Board
     @guesses.push(guess)
   end
 
-  def print_turn(incorrect_guesses)
+  def print_turn(incorrect_guesses, guess)
     @figure.snowman(incorrect_guesses.length)
+    puts "Correct guess!\n\n" if guess_correct?(guess)
     puts @display_word.join(" ") + "\n\n"
     if incorrect_guesses.length != 6
       puts (6 - incorrect_guesses.length).to_s + " more wrong guesses until the Snowman appears!"

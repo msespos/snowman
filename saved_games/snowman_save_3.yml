@@ -1,7 +1,6 @@
 ---
-:secret_word: shirker
+:secret_word: benignantly
 :unguessed_letters:
-- a
 - b
 - c
 - d
@@ -27,17 +26,22 @@
 - x
 - y
 - z
-:correct_guesses: []
+:correct_guesses:
+- a
 :incorrect_guesses: []
 :board: !ruby/object:Board
   secret_word:
-  - s
-  - h
-  - i
-  - r
-  - k
+  - b
   - e
-  - r
+  - n
+  - i
+  - g
+  - n
+  - a
+  - n
+  - t
+  - l
+  - y
   display_word:
   - _
   - _
@@ -45,6 +49,11 @@
   - _
   - _
   - _
+  - a
   - _
-  guesses: []
+  - _
+  - _
+  - _
+  guesses:
+  - a
   figure: !ruby/object:Figure {}

@@ -115,7 +115,7 @@ class Game
       guess = get_guess
       refile_guess(guess)
       @board.replace_dashes(guess)
-      @board.print_turn(@incorrect_guesses)
+      @board.print_turn(@incorrect_guesses, guess)
       if save_game?
         save_or_load_text("save")
         save_game(get_slot)
