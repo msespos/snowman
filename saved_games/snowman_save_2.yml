@@ -1,8 +1,6 @@
 ---
-:secret_word: factiousness
+:secret_word: hooray
 :unguessed_letters:
-- a
-- b
 - c
 - d
 - e
@@ -27,34 +25,26 @@
 - x
 - y
 - z
-:correct_guesses: []
-:incorrect_guesses: []
+:correct_guesses:
+- a
+:incorrect_guesses:
+- b
 :board: !ruby/object:Board
   secret_word:
-  - f
-  - a
-  - c
-  - t
-  - i
+  - h
   - o
-  - u
-  - s
-  - n
-  - e
-  - s
-  - s
+  - o
+  - r
+  - a
+  - y
   display_word:
   - _
   - _
   - _
   - _
+  - a
   - _
-  - _
-  - _
-  - _
-  - _
-  - _
-  - _
-  - _
-  guesses: []
+  guesses:
+  - a
+  - b
   figure: !ruby/object:Figure {}

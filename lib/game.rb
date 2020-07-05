@@ -94,7 +94,7 @@ class Game
   end
 
   def save_game(slot)
-    File.open("saved_games/snowman_save_#{slot}.yml", "w").puts(self.to_yaml)
+    File.open("saved_games/snowman_save_#{slot}.yml", "w").puts(to_yaml)
   end
 
   def load_game
@@ -112,6 +112,10 @@ class Game
 
   def play
     until @board.word_solved? || @incorrect_guesses.length == 6
+      guess = get_guess
+      refile_guess(guess)
+      @board.replace_dashes(guess)
+      @board.print_turn(@incorrect_guesses)
       if save_game?
         save_or_load_text("save")
         save_game(get_slot)
@@ -119,29 +123,34 @@ class Game
       else
         puts "Let's get back to the game. You can always save later!"
       end
-      guess = get_guess
-      refile_guess(guess)
-      @board.replace_dashes(guess)
-      @board.print_turn(@incorrect_guesses)
     end
     finish
   end
 
-  def intro
+  def display_dashes
+    puts "The word has the following number of letters:\n"
+    @board.all_dashes
+  end
+
+  def intro_text
     puts <<~HEREDOC
       Welcome to Snowman!
       Your job is to guess the secret word before the Snowman appears.
       You get five wrong guesses before he does.
       Good luck!
-      Here is how many letters are in the word:
 
     HEREDOC
-    @board.all_dashes
   end
 
   def start
-    load_game? ? load_game : @board = Board.new(new_secret_word)
-    intro
+    intro_text
+    if load_game?
+      load_game
+      @board.print_turn(@incorrect_guesses)
+    else
+      @board = Board.new(new_secret_word)
+      display_dashes
+    end
     play
   end
 end
