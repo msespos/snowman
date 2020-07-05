@@ -45,6 +45,25 @@ class Game
     @unguessed_letters.delete(guess)
   end
 
+  def to_yaml
+    YAML.dump ({
+      :secret_word => @secret_word,
+      :unguessed_letters => @unguessed_letters,
+      :correct_guesses => @correct_guesses,
+      :incorrect_guesses => @incorrect_guesses,
+      :board => @board
+    })
+  end
+
+  def from_yaml(game)
+    status = YAML.load(File.read(game))
+    @secret_word = status[:secret_word]
+    @unguessed_letters = status[:unguessed_letters]
+    @correct_guesses = status[:correct_guesses]
+    @incorrect_guesses = status[:incorrect_guesses]
+    @board = status[:board]
+  end
+
   def save_or_load_text(save_or_load)
     if save_or_load == "save"
       puts "There are 3 slots to save in, labeled 1, 2, and 3."
@@ -74,31 +93,13 @@ class Game
     gets.chomp.downcase == "y"
   end
 
-  def to_yaml
-    YAML.dump ({
-      :secret_word => @secret_word,
-      :unguessed_letters => @unguessed_letters,
-      :correct_guesses => @correct_guesses,
-      :incorrect_guesses => @incorrect_guesses,
-      :board => @board
-    })
-  end
-
-  def from_yaml(game)
-    status = YAML.load(File.read(game))
-    @secret_word = status[:secret_word]
-    @unguessed_letters = status[:unguessed_letters]
-    @correct_guesses = status[:correct_guesses]
-    @incorrect_guesses = status[:incorrect_guesses]
-    @board = status[:board]
-  end
-
   def save_game(slot)
     File.open("saved_games/snowman_save_#{slot}.yml", "w").puts(self.to_yaml)
   end
 
   def load_game
-    from_yaml("saved_games/snowman_save_1.yml")
+    save_or_load_text("load")
+    from_yaml("saved_games/snowman_save_#{get_slot}.yml")
   end
 
   def finish
