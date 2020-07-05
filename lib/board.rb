@@ -25,7 +25,7 @@ class Board
     @guesses.push(guess)
   end
 
-  def print_turn(incorrect_guesses, guess)
+  def print_turn(incorrect_guesses, guess = nil)
     @figure.snowman(incorrect_guesses.length)
     puts "Correct guess!\n\n" if guess_correct?(guess)
     puts @display_word.join(" ") + "\n\n"
