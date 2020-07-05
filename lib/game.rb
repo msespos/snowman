@@ -28,14 +28,19 @@ class Game
 
   def get_guess
     puts "Please enter a letter that you have not guessed yet."
+    puts "(If you would like to save the game, enter the word 'save.')"
     guess = gets.chomp.downcase
-    while guessed_already?(guess) || !ALPHABET.include?(guess)
-      if guessed_already?(guess)
-        puts "You've already guessed that letter! Please try again."
-      else
-        puts "That is not a letter! Please try again."
+    if guess == "save"
+      save_game
+    else
+      while guessed_already?(guess) || !ALPHABET.include?(guess)
+        if guessed_already?(guess)
+          puts "You've already guessed that letter! Please try again."
+        else
+          puts "That is not a letter! Please try again."
+        end
+        guess = gets.chomp.downcase
       end
-      guess = gets.chomp.downcase
     end
     guess
   end
@@ -93,8 +98,10 @@ class Game
     gets.chomp.downcase == "y"
   end
 
-  def save_game(slot)
-    File.open("saved_games/snowman_save_#{slot}.yml", "w").puts(to_yaml)
+  def save_game
+    save_or_load_text("save")
+    File.open("saved_games/snowman_save_#{get_slot}.yml", "w").puts(to_yaml)
+    puts "Game saved! Let's get back to the game."
   end
 
   def load_game
@@ -116,13 +123,6 @@ class Game
       refile_guess(guess)
       @board.replace_dashes(guess)
       @board.print_turn(@incorrect_guesses, guess)
-      if save_game?
-        save_or_load_text("save")
-        save_game(get_slot)
-        puts "Game saved! Let's get back to the game."
-      else
-        puts "Let's get back to the game. You can always save later!"
-      end
     end
     finish
   end

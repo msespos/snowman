@@ -1,5 +1,5 @@
 ---
-:secret_word: benignantly
+:secret_word: anomalously
 :unguessed_letters:
 - b
 - c
@@ -31,25 +31,25 @@
 :incorrect_guesses: []
 :board: !ruby/object:Board
   secret_word:
-  - b
-  - e
-  - n
-  - i
-  - g
-  - n
   - a
   - n
-  - t
+  - o
+  - m
+  - a
+  - l
+  - o
+  - u
+  - s
   - l
   - y
   display_word:
-  - _
-  - _
-  - _
+  - a
   - _
   - _
   - _
   - a
+  - _
+  - _
   - _
   - _
   - _
