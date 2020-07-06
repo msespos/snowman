@@ -1,9 +1,8 @@
 ---
-:secret_word: hooray
+:secret_word: retort
 :unguessed_letters:
 - c
 - d
-- e
 - f
 - g
 - h
@@ -18,7 +17,6 @@
 - q
 - r
 - s
-- t
 - u
 - v
 - w
@@ -26,25 +24,29 @@
 - y
 - z
 :correct_guesses:
-- a
+- e
+- t
 :incorrect_guesses:
+- a
 - b
 :board: !ruby/object:Board
   secret_word:
-  - h
-  - o
+  - r
+  - e
+  - t
   - o
   - r
-  - a
-  - y
+  - t
   display_word:
   - _
+  - e
+  - t
   - _
   - _
-  - _
-  - a
-  - _
+  - t
   guesses:
   - a
+  - e
   - b
+  - t
   figure: !ruby/object:Figure {}

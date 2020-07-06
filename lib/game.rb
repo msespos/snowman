@@ -29,10 +29,11 @@ class Game
   def get_guess
     puts "Please enter a letter that you have not guessed yet."
     puts "(If you would like to save the game, enter the word 'save.')"
-    guess = gets.chomp.downcase
-    if guess == "save"
+    selection = gets.chomp.downcase
+    if selection == "save"
       save_game
     else
+      guess = selection
       while guessed_already?(guess) || !ALPHABET.include?(guess)
         if guessed_already?(guess)
           puts "You've already guessed that letter! Please try again."
@@ -122,7 +123,7 @@ class Game
       guess = get_guess
       refile_guess(guess)
       @board.replace_dashes(guess)
-      @board.print_turn(@incorrect_guesses, guess)
+      @board.display_turn(@incorrect_guesses, guess)
     end
     finish
   end
@@ -146,7 +147,7 @@ class Game
     intro_text
     if load_game?
       load_game
-      @board.print_turn(@incorrect_guesses)
+      @board.display_turn(@incorrect_guesses)
     else
       @board = Board.new(new_secret_word)
       display_dashes
