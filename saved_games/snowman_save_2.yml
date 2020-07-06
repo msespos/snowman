@@ -1,5 +1,5 @@
 ---
-:secret_word: emender
+:secret_word: revertible
 :unguessed_letters:
 - b
 - c
@@ -17,36 +17,44 @@
 - p
 - q
 - r
-- s
 - t
 - u
-- v
 - w
 - x
 - y
 - z
 :correct_guesses:
 - e
+- v
 :incorrect_guesses:
 - a
+- s
 :board: !ruby/object:Board
   secret_word:
+  - r
   - e
-  - m
-  - e
-  - n
-  - d
+  - v
   - e
   - r
+  - t
+  - i
+  - b
+  - l
+  - e
   display_word:
-  - e
   - _
   - e
+  - v
+  - e
+  - _
+  - _
+  - _
   - _
   - _
   - e
-  - _
   guesses:
   - a
   - e
+  - v
+  - s
   figure: !ruby/object:Figure {}

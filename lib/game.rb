@@ -18,22 +18,18 @@ class Game
     @secret_word = word_list.sample
   end
 
-  def guessed_already?(letter)
-    @correct_guesses.include?(letter) || @incorrect_guesses.include?(letter)
+  def guessed_already?(guess)
+    @correct_guesses.include?(guess) || @incorrect_guesses.include?(guess)
   end
 
-  def in_secret_word?(letter)
-    @secret_word.include?(letter)
-  end
-
-  def get_guess
+  def user_input
     puts "Please enter a letter that you have not guessed yet."
     puts "(If you would like to save the game, enter the word 'save.')"
-    selection = gets.chomp.downcase
-    if selection == "save"
+    user_input = gets.chomp.downcase
+    if user_input == "save"
       save_game
     else
-      guess = selection
+      guess = user_input
       while guessed_already?(guess) || !ALPHABET.include?(guess)
         if guessed_already?(guess)
           puts "You've already guessed that letter! Please try again."
@@ -42,12 +38,12 @@ class Game
         end
         guess = gets.chomp.downcase
       end
+      guess
     end
-    guess
   end
 
   def refile_guess(guess)
-    in_secret_word?(guess) ? @correct_guesses.push(guess) : @incorrect_guesses.push(guess)
+    @secret_word.include?(guess) ? @correct_guesses.push(guess) : @incorrect_guesses.push(guess)
     @unguessed_letters.delete(guess)
   end
 
@@ -115,17 +111,14 @@ class Game
 
   def play
     until @board.word_solved? || @incorrect_guesses.length == 6
-      guess = get_guess
-      refile_guess(guess) if guess != "save"
-      @board.replace_dashes(guess) if guess != "save"
-      @board.display_turn(@incorrect_guesses, guess)
+      guess = user_input
+      unless guess == nil
+        refile_guess(guess)
+        @board.replace_dashes(guess)
+        @board.display_turn(@incorrect_guesses, guess)
+      end
     end
     finish
-  end
-
-  def display_dashes
-    puts "The word has the following number of letters:\n"
-    @board.all_dashes
   end
 
   def intro_text
@@ -136,6 +129,11 @@ class Game
       Good luck!
 
     HEREDOC
+  end
+
+  def display_dashes
+    puts "The word has the following number of letters:\n"
+    @board.all_dashes
   end
 
   def start
