@@ -16,7 +16,7 @@ class Board
     @secret_word.include?(guess)
   end
 
-    def word_solved?
+  def word_solved?
     !@display_word.include?("_")
   end
 
@@ -43,7 +43,7 @@ class Board
     @figure.snowman(incorrect_guesses.length)
     puts "Correct guess!\n\n" if guess_correct?(guess)
     puts @display_word.join(" ") + "\n\n"
-    display_num_wrong_guesses_left(incorrect_guesses)
+    display_num_wrong_guesses_left(incorrect_guesses) if !guess_correct?(guess)
     display_incorrect_guesses(incorrect_guesses)
   end
 

@@ -1,6 +1,7 @@
 ---
-:secret_word: retort
+:secret_word: emender
 :unguessed_letters:
+- b
 - c
 - d
 - f
@@ -17,6 +18,7 @@
 - q
 - r
 - s
+- t
 - u
 - v
 - w
@@ -25,28 +27,26 @@
 - z
 :correct_guesses:
 - e
-- t
 :incorrect_guesses:
 - a
-- b
 :board: !ruby/object:Board
   secret_word:
-  - r
   - e
-  - t
-  - o
+  - m
+  - e
+  - n
+  - d
+  - e
   - r
-  - t
   display_word:
+  - e
   - _
   - e
-  - t
   - _
   - _
-  - t
+  - e
+  - _
   guesses:
   - a
   - e
-  - b
-  - t
   figure: !ruby/object:Figure {}

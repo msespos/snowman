@@ -70,17 +70,17 @@ class Game
     @board = status[:board]
   end
 
-  def save_or_load_text(save_or_load)
-    if save_or_load == "save"
-      puts "There are 3 slots to save in, labeled 1, 2, and 3."
-      puts "Please select a number. You will overwrite any already saved game in that slot."
-    else
-      puts "There are 3 slots that a game could be saved in, labeled 1, 2, and 3."
-      puts "Please select a number. You should have saved a game in that slot already."
-    end
+  def save_text
+    puts "There are 3 slots to save in, labeled 1, 2, and 3."
+    puts "Please select a number. You will overwrite any already saved game in that slot."
   end
 
-  def get_slot
+  def load_text
+    puts "There are 3 slots that a game could be saved in, labeled 1, 2, and 3."
+    puts "Please select a number. You should have saved a game in that slot already."
+  end
+
+  def slot
     slot = gets.chomp
     until slot == "1" || slot == "2" || slot == "3"
       puts "Please select a number between 1 and 3."
@@ -89,25 +89,20 @@ class Game
     slot
   end
 
-  def save_game?
-    puts "Would you like to save the game at this point?\nEnter y for yes, any other key for no"
-    gets.chomp.downcase == "y"
-  end
-
   def load_game?
     puts "Would you like to load a saved game?\nEnter y for yes, any other key for no"
     gets.chomp.downcase == "y"
   end
 
   def save_game
-    save_or_load_text("save")
-    File.open("saved_games/snowman_save_#{get_slot}.yml", "w").puts(to_yaml)
+    save_text
+    File.open("saved_games/snowman_save_#{slot}.yml", "w").puts(to_yaml)
     puts "Game saved! Let's get back to the game."
   end
 
   def load_game
-    save_or_load_text("load")
-    from_yaml("saved_games/snowman_save_#{get_slot}.yml")
+    load_text
+    from_yaml("saved_games/snowman_save_#{slot}.yml")
   end
 
   def finish
@@ -121,8 +116,8 @@ class Game
   def play
     until @board.word_solved? || @incorrect_guesses.length == 6
       guess = get_guess
-      refile_guess(guess)
-      @board.replace_dashes(guess)
+      refile_guess(guess) if guess != "save"
+      @board.replace_dashes(guess) if guess != "save"
       @board.display_turn(@incorrect_guesses, guess)
     end
     finish
