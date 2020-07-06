@@ -125,7 +125,7 @@ class Game
     puts <<~HEREDOC
       Welcome to Snowman!
       Your job is to guess the secret word before the Snowman appears.
-      You get five wrong guesses before he does.
+      He appears after six wrong guesses.
       Good luck!
 
     HEREDOC
