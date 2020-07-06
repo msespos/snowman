@@ -38,7 +38,7 @@ class Game
     puts "Please enter a letter that you have not guessed yet."
     puts "(If you would like to save the game, enter the word 'save.')"
     user_input = gets.chomp.downcase
-    user_input == "save" ? save_game : check_guess
+    user_input == "save" ? save_game : check_guess(user_input)
   end
 
   def refile_guess(guess)
