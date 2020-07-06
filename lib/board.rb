@@ -12,10 +12,6 @@ class Board
     puts "_ " * (@secret_word.length - 1) + "_\n\n"
   end
 
-  def guess_correct?(guess)
-    @secret_word.include?(guess)
-  end
-
   def word_solved?
     !@display_word.include?("_")
   end
@@ -41,7 +37,7 @@ class Board
 
   def display_turn(incorrect_guesses, guess = nil)
     @figure.snowman(incorrect_guesses.length)
-    puts "Correct guess!\n\n" if guess_correct?(guess)
+    puts "Correct guess!\n\n" if @secret_word.include?(guess)
     puts @display_word.join(" ") + "\n\n"
     display_num_wrong_guesses_left(incorrect_guesses)
     display_incorrect_guesses(incorrect_guesses)

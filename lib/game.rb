@@ -22,24 +22,23 @@ class Game
     @correct_guesses.include?(guess) || @incorrect_guesses.include?(guess)
   end
 
+  def check_guess(guess)
+    while guessed_already?(guess) || !ALPHABET.include?(guess)
+      if guessed_already?(guess)
+        puts "You've already guessed that letter! Please try again."
+      else
+        puts "That is not a letter! Please try again."
+      end
+      guess = gets.chomp.downcase
+    end
+    guess
+  end
+
   def user_input
     puts "Please enter a letter that you have not guessed yet."
     puts "(If you would like to save the game, enter the word 'save.')"
     user_input = gets.chomp.downcase
-    if user_input == "save"
-      save_game
-    else
-      guess = user_input
-      while guessed_already?(guess) || !ALPHABET.include?(guess)
-        if guessed_already?(guess)
-          puts "You've already guessed that letter! Please try again."
-        else
-          puts "That is not a letter! Please try again."
-        end
-        guess = gets.chomp.downcase
-      end
-      guess
-    end
+    user_input == "save" ? save_game : check_guess
   end
 
   def refile_guess(guess)
