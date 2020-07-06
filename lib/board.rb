@@ -12,13 +12,13 @@ class Board
     puts "_ " * (@secret_word.length - 1) + "_\n\n"
   end
 
-  def word_solved?
-    !@display_word.include?("_")
-  end
-
   def replace_dashes(guess)
     @display_word.length.times { |i| @display_word[i] = guess if @secret_word[i] == guess }
     @guesses.push(guess)
+  end
+
+  def word_solved?
+    !@display_word.include?("_")
   end
 
   def display_num_wrong_guesses_left(incorrect_guesses)
