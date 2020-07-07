@@ -44,7 +44,7 @@ class Figure
            |
 
 
-  HEREDOC
+    HEREDOC
   end
 
   def one_wrong
@@ -84,7 +84,7 @@ class Figure
 
     HEREDOC
   end
-  
+
   def three_wrong
     puts <<-HEREDOC
 

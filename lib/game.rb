@@ -18,7 +18,7 @@ class Game
 
   def slot
     slot = gets.chomp
-    until slot == "1" || slot == "2" || slot == "3"
+    until ["1", "2", "3"].include? slot
       puts "Please select a number between 1 and 3."
       slot = gets.chomp
     end
@@ -27,11 +27,11 @@ class Game
 
   def to_yaml
     YAML.dump ({
-      :secret_word => @secret_word,
-      :unguessed_letters => @unguessed_letters,
-      :correct_guesses => @correct_guesses,
-      :incorrect_guesses => @incorrect_guesses,
-      :board => @board
+      secret_word: @secret_word,
+      unguessed_letters: @unguessed_letters,
+      correct_guesses: @correct_guesses,
+      incorrect_guesses: @incorrect_guesses,
+      board: @board
     })
   end
 
@@ -80,11 +80,10 @@ class Game
   def play
     until @board.word_solved? || @incorrect_guesses.length == 6
       guess = user_input
-      unless guess == nil
-        refile_guess(guess)
-        @board.replace_dashes(guess)
-        @board.display_turn(@incorrect_guesses, guess)
-      end
+      next if guess.nil?
+      refile_guess(guess)
+      @board.replace_dashes(guess)
+      @board.display_turn(@incorrect_guesses, guess)
     end
     finish
   end
@@ -146,4 +145,5 @@ class Game
     end
     play
   end
+
 end
