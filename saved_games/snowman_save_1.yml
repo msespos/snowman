@@ -1,63 +1,48 @@
 ---
-:secret_word: religious
+:secret_word: keeled
 :unguessed_letters:
+- a
 - b
 - c
 - d
+- e
+- f
+- g
 - h
+- i
 - j
 - k
+- l
 - m
+- n
 - o
 - p
 - q
+- r
 - s
 - t
+- u
 - v
 - w
 - x
 - y
 - z
-:correct_guesses:
-- e
-- r
-- g
-- u
-- l
-- i
-:incorrect_guesses:
-- f
-- n
-- a
+:correct_guesses: []
+:incorrect_guesses: []
 :board: !ruby/object:Board
   secret_word:
-  - r
+  - k
+  - e
   - e
   - l
-  - i
-  - g
-  - i
-  - o
-  - u
-  - s
+  - e
+  - d
   display_word:
-  - r
-  - e
-  - l
-  - i
-  - g
-  - i
   - _
-  - u
   - _
-  guesses:
-  - e
-  - r
-  - f
-  - g
-  - u
-  - n
-  - a
-  - l
-  - i
+  - _
+  - _
+  - _
+  - _
+  guesses: []
   figure: !ruby/object:Figure {}

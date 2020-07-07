@@ -71,9 +71,9 @@ class Game
 
   def finish
     if @board.word_solved?
-      puts "Congratulations! You win!\n"
+      puts "Congratulations! You win!\n\n"
     else
-      puts "You lose!\nThe word was #{@secret_word}!\n"
+      puts "You lose!\nThe word was #{@secret_word}!\n\n"
     end
   end
 
